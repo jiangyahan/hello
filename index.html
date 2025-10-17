@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>蒋雅涵的个人主页</title>
+    <!-- 内置基础样式，避免依赖外部CSS文件 -->
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
+        body { background-color: #f5f5f5; padding: 20px; }
+        header { text-align: center; margin-bottom: 40px; }
+        h1 { color: #333; margin-bottom: 10px; }
+        .motto { color: #666; font-size: 18px; margin-bottom: 20px; }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 30px; }
+        nav li { color: #2c3e50; font-size: 16px; cursor: pointer; }
+        nav li:hover { color: #3498db; }
+        main { max-width: 1200px; margin: 0 auto; }
+        section { background-color: white; padding: 30px; border-radius: 8px; margin-bottom: 30px; }
+        h2 { color: #333; margin-bottom: 25px; border-left: 4px solid #3498db; padding-left: 10px; }
+        /* 关于我模块样式 */
+        #about .intro { line-height: 1.8; color: #555; font-size: 16px; }
+        /* 技能模块样式 */
+        .skills-container { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; }
+        .skill-card { width: 220px; background-color: #fafafa; padding: 20px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .skill-card h3 { color: #2c3e50; margin-bottom: 15px; text-align: center; }
+        .skill-card p { color: #666; margin-bottom: 8px; text-align: center; }
+        /* 兴趣爱好模块样式 */
+        .hobbies-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+        .hobby-item { background-color: #3498db; color: white; padding: 12px 25px; border-radius: 20px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>蒋雅涵的个人主页</h1>
+        <p class="motto">不学习则如水中蛙观天上月，若学习便如一粒浮游见青天</p>
+        <nav>
+            <ul>
+                <li>关于我</li>
+                <li>我的技能</li>
+                <li>喜欢的人物</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- 补充“关于我”模块内容 -->
+        <section id="about">
+            <h2>关于我</h2>
+            <div class="intro">
+                <p>  一天我正在家里和小猫咪玩，小猫突然开始说话，它解答了很多人类难题。因为这，我被提拔当了镇长。</p>
+                <p>之后，我坐飞机去北京向领导汇报。他不相信这是真的，因为他从来没看见过会说话的猫。他下令把我关进监狱。就在去监狱的路上，我的小猫咪出现了。</p>
+                <p>它变成了一列有小猫头的火车……我的命运和小猫紧紧连在了一起。 在火车形小猫的帮助下，我回家了。</p>
+                 <p>我来到了镇政府办公室。那只猫——现在是一只真正的猫了——跟在我的身后，说了最后一句人类的语言，</p>
+                <p>“：我年轻的主人，你不适合搞政治。你现在应该做的，是到学校去学习更多的知识。尤其是java script。只有这样，你才能把工作干得更好，过上更好的生活……”</p>
+                <p>也许是听了小猫的忠告，我开始了学习java script......</p>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>我的技能</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h3>武器</h3>
+                    <p>青龙偃月刀</p>
+                    <p>一只可以写写画画的笔</p>
+                </div>
+                <div class="skill-card">
+                    <h3>属性</h3>
+                    <p>七月流火</p>
+                    <p>人类</p>
+                </div>
+                <div class="skill-card">
+                    <h3>想干的事</h3>
+                    <p>有一份好工作</p>
+                    <p>用魔法赚钱去旅游</p>
+                </div>
+                <div class="skill-card">
+                    <h3>٩(•ิ˓̭ •ิ )ง</h3>
+                    <p>(⁰▿⁰)</p>
+                    <p>＼＼\\٩( 'ω' )و //／／</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="hobbies">
+            <h2>喜欢的人物</h2>
+            <div class="hobbies-container">
+                <div class="hobby-item">Hans Zoe</div>
+                <div class="hobby-item">Nicolaus Copernicus</div>
+                <div class="hobby-item">Lana Del Rey</div>
+                <div class="hobby-item">我妈</div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
