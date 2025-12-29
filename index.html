@@ -3,94 +3,485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>蒋雅涵的个人主页</title>
-    <!-- 内置基础样式，避免依赖外部CSS文件 -->
+    <title>大明王朝1566 | 深度解读与故事全貌</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif; }
-        body { background-color: #f5f5f5; padding: 20px; }
-        header { text-align: center; margin-bottom: 40px; }
-        h1 { color: #333; margin-bottom: 10px; }
-        .motto { color: #666; font-size: 18px; margin-bottom: 20px; }
-        nav ul { list-style: none; display: flex; justify-content: center; gap: 30px; }
-        nav li { color: #2c3e50; font-size: 16px; cursor: pointer; }
-        nav li:hover { color: #3498db; }
-        main { max-width: 1200px; margin: 0 auto; }
-        section { background-color: white; padding: 30px; border-radius: 8px; margin-bottom: 30px; }
-        h2 { color: #333; margin-bottom: 25px; border-left: 4px solid #3498db; padding-left: 10px; }
-        /* 关于我模块样式 */
-        #about .intro { line-height: 1.8; color: #555; font-size: 16px; }
-        /* 技能模块样式 */
-        .skills-container { display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; }
-        .skill-card { width: 220px; background-color: #fafafa; padding: 20px; border-radius: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .skill-card h3 { color: #2c3e50; margin-bottom: 15px; text-align: center; }
-        .skill-card p { color: #666; margin-bottom: 8px; text-align: center; }
-        /* 兴趣爱好模块样式 */
-        .hobbies-container { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-        .hobby-item { background-color: #3498db; color: white; padding: 12px 25px; border-radius: 20px; font-size: 16px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", "PingFang SC", sans-serif;
+        }
+
+        /* 头部样式 */
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-menu a {
+            color: #ecf0f1;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #3498db;
+        }
+
+        /* banner样式（保留背景图daming-bg.jpg，路径无误） */
+        .banner {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url("daming-bg.jpg") no-repeat center center;
+            background-size: cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .banner h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .banner p {
+            font-size: 1.2rem;
+            max-width: 800px;
+        }
+
+        /* 核心内容区样式 */
+        .content {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: #2c3e50;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #3498db;
+        }
+
+        /* 基本信息卡片 */
+        .info-card {
+            background-color: #f8f9fa;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .info-card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .info-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .info-list li {
+            padding: 0.5rem 0;
+            color: #34495e;
+        }
+
+        .info-list li strong {
+            color: #2c3e50;
+        }
+
+        /* 人物模块（图片路径全部核对无误，确保匹配仓库文件名） */
+        .characters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .character-card {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .character-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .character-img {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .character-info {
+            padding: 1.5rem;
+        }
+
+        .character-info h4 {
+            font-size: 1.2rem;
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+        }
+
+        .character-role {
+            color: #3498db;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .character-desc {
+            color: #34495e;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* 经典桥段 & 作品内涵 & 幕后花絮 */
+        .classic-scene, .connotation-item, .behind-item {
+            background-color: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .classic-scene h4, .connotation-item h4, .behind-item h4 {
+            color: #2c3e50;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        .classic-scene p, .connotation-item p, .behind-item p {
+            color: #34495e;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* 底部样式 */
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-content p {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* 响应式适配 */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .banner h1 {
+                font-size: 2rem;
+            }
+
+            .banner p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- 头部 -->
     <header>
-        <h1>蒋雅涵的个人主页</h1>
-        <p class="motto">不学习则如水中蛙观天上月，若学习便如一粒浮游见青天</p>
-        <nav>
-            <ul>
-                <li>关于我</li>
-                <li>我的技能</li>
-                <li>喜欢的人物</li>
-            </ul>
-        </nav>
+        <div class="header-container">
+            <div class="site-title">大明王朝1566 | 深度解读与故事全貌</div>
+            <nav class="nav-menu">
+                <a href="#banner">首页</a>
+                <a href="#plot">剧情总览</a>
+                <a href="#characters">核心人物</a>
+                <a href="#classic">经典桥段</a>
+                <a href="#connotation">作品内涵</a>
+                <a href="#behind">幕后花絮</a>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <!-- 补充“关于我”模块内容 -->
-        <section id="about">
-            <h2>关于我</h2>
-            <div class="intro">
-                <p>  一天我正在家里和小猫咪玩，小猫突然开始说话，它解答了很多人类难题。因为这，我被提拔当了镇长。</p>
-                <p>之后，我坐飞机去北京向领导汇报。他不相信这是真的，因为他从来没看见过会说话的猫。他下令把我关进监狱。就在去监狱的路上，我的小猫咪出现了。</p>
-                <p>它变成了一列有小猫头的火车……我的命运和小猫紧紧连在了一起。 在火车形小猫的帮助下，我回家了。</p>
-                 <p>我来到了镇政府办公室。那只猫——现在是一只真正的猫了——跟在我的身后，说了最后一句人类的语言，</p>
-                <p>“：我年轻的主人，你不适合搞政治。你现在应该做的，是到学校去学习更多的知识。尤其是java script。只有这样，你才能把工作干得更好，过上更好的生活……”</p>
-                <p>也许是听了小猫的忠告，我开始了学习java script......</p>
+    <!-- Banner区域（背景图路径无误） -->
+    <div class="banner" id="banner">
+        <h1>大明王朝1566</h1>
+        <p>一部读懂嘉靖朝的权谋史诗，中国历史剧的巅峰之作。以嘉靖帝与海瑞的博弈为核心，描绘了明朝中后期官场的波诡云谲与民生百态，兼具历史深度与艺术价值。</p>
+    </div>
+
+    <!-- 核心内容区 -->
+    <div class="content">
+        <!-- 剧情总览 -->
+        <section class="section" id="plot">
+            <h2 class="section-title">剧情总览</h2>
+            <div class="info-card">
+                <h3>基本信息</h3>
+                <ul class="info-list">
+                    <li><strong>导演：</strong>张黎</li>
+                    <li><strong>编剧：</strong>刘和平</li>
+                    <li><strong>播出时间：</strong>2007年（首播）/ 2017年（重播）</li>
+                    <li><strong>集数：</strong>46集</li>
+                    <li><strong>时代背景：</strong>明嘉靖四十五年</li>
+                    <li><strong>核心主线：</strong>改稻为桑国策引发的多方博弈</li>
+                </ul>
+            </div>
+            <div>
+                <h3 style="color: #2c3e50; margin-bottom: 1rem; font-size: 1.3rem;">核心剧情脉络</h3>
+                <p style="color: #34495e; line-height: 1.8; margin-bottom: 1rem;">
+                    故事始于明嘉靖四十五年，此时的大明王朝早已不复盛景，国库空虚、边防废弛、民不聊生，而身居西苑的嘉靖帝朱厚熜一心崇道修仙，将朝政大权交由严党把持。为填补国库亏空，严党提出“改稻为桑”的国策，计划将浙江的稻田改为桑田，通过织造丝绸销往海外获取暴利。
+                </p>
+                <p style="color: #34495e; line-height: 1.8; margin-bottom: 1rem;">
+                    然而这一国策在执行过程中被地方官员滥用，他们勾结豪强，低价兼并农民土地，甚至不惜决堤淹田，导致浙江百姓流离失所，民变一触即发。与此同时，以徐阶、张居正为首的清流集团，早已对严党的贪腐专权忍无可忍，借“改稻为桑”的弊政，暗中布局，欲扳倒严党。
+                </p>
+                <p style="color: #34495e; line-height: 1.8;">
+                    海瑞出任浙江淳安知县，后升任应天巡抚，他刚正不阿，不畏权贵，不仅在地方上严惩贪腐、安抚百姓，更在掌握严党罪证后，冒死上疏《治安疏》，直面批判嘉靖帝的怠政与奢靡。最终，严党倒台，嘉靖驾崩，裕王朱载坖继位，海瑞的命运与大明王朝的未来，迎来了新的转折。
+                </p>
             </div>
         </section>
 
-        <section id="skills">
-            <h2>我的技能</h2>
-            <div class="skills-container">
-                <div class="skill-card">
-                    <h3>武器</h3>
-                    <p>青龙偃月刀</p>
-                    <p>一只可以写写画画的笔</p>
+        <!-- 核心人物（所有图片路径100%核对无误，严格匹配约定文件名） -->
+        <section class="section" id="characters">
+            <h2 class="section-title">核心人物</h2>
+            <div class="characters">
+                <!-- 张居正 - 匹配zhangjuzheng.jpg -->
+                <div class="character-card">
+                    <div class="character-img" style="background-image: url('zhangjuzheng.jpg');"></div>
+                    <div class="character-info">
+                        <h4>张居正</h4>
+                        <div class="character-role">清流集团 | 徐阶弟子</div>
+                        <div class="character-desc">
+                            极具政治远见与实干能力的青年官员，是清流集团的核心智囊之一。他洞悉朝局利弊，暗中协助徐阶布局扳倒严党，为后续万历新政奠定了思想与政治基础。
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-card">
-                    <h3>属性</h3>
-                    <p>七月流火</p>
-                    <p>人类</p>
+                <!-- 高拱 - 匹配gaogong.jpg -->
+                <div class="character-card">
+                    <div class="character-img" style="background-image: url('gaogong.jpg');"></div>
+                    <div class="character-info">
+                        <h4>高拱</h4>
+                        <div class="character-role">清流集团 | 内阁大臣</div>
+                        <div class="character-desc">
+                            性格刚直、言辞锋利的内阁重臣，依附裕王阵营，与严党针锋相对。他以“大明户部是天下的户部”为念，在财政议题上多次驳斥严党的贪腐主张。
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-card">
-                    <h3>想干的事</h3>
-                    <p>有一份好工作</p>
-                    <p>用魔法赚钱去旅游</p>
+                <!-- 胡宗宪 - 匹配huzongxian.jpg -->
+                <div class="character-card">
+                    <div class="character-img" style="background-image: url('huzongxian.jpg');"></div>
+                    <div class="character-info">
+                        <h4>胡宗宪</h4>
+                        <div class="character-role">严党/清流之间 | 浙直总督</div>
+                        <div class="character-desc">
+                            心系家国与百姓的悲情忠臣，虽为严嵩门生，却不愿与严党同流合污。他在“改稻为桑”中艰难平衡各方，既要保浙江百姓，又要顾抗倭大局，最终落得革职返乡的结局。
+                        </div>
+                    </div>
                 </div>
-                <div class="skill-card">
-                    <h3>٩(•ิ˓̭ •ิ )ง</h3>
-                    <p>(⁰▿⁰)</p>
-                    <p>＼＼\\٩( 'ω' )و //／／</p>
+                <!-- 嘉靖帝 - 匹配jiaqingdi.jpg -->
+                <div class="character-card">
+                    <div class="character-img" style="background-image: url('jiaqingdi.jpg');"></div>
+                    <div class="character-info">
+                        <h4>朱厚熜（嘉靖帝）</h4>
+                        <div class="character-role">皇室集团 | 明朝第十一位皇帝</div>
+                        <div class="character-desc">
+                            深不可测的权谋帝王，崇道修仙，常年深居西苑，却能通过司礼监与内阁牢牢掌控朝局。他自私多疑，精于平衡之术，将严党与清流玩弄于股掌之间，既是王朝衰落的推手，也有着身为帝王的孤独与无奈。
+                        </div>
+                    </div>
+                </div>
+                <!-- 吕芳 - 匹配lufang.jpg -->
+                <div class="character-card">
+                    <div class="character-img" style="background-image: url('lufang.jpg');"></div>
+                    <div class="character-info">
+                        <h4>吕芳</h4>
+                        <div class="character-role">司礼监 | 掌印太监</div>
+                        <div class="character-desc">
+                            嘉靖帝近侍，圆滑通透，心思缜密，既能揣摩帝王心意，又心存善念，尽力调和各方矛盾。他看着嘉靖长大，深知深宫沉浮的残酷，最终为避祸主动离宫，成为剧中少有的得以善终的核心人物。
+                        </div>
+                    </div>
+                </div>
+                <!-- 徐阶 - 匹配xujie.jpg（已修正，无中文） -->
+                <div class="character-card">
+                    <div class="character-img" style="background-image: url('xujie.jpg');"></div>
+                    <div class="character-info">
+                        <h4>徐阶</h4>
+                        <div class="character-role">清流集团 | 内阁次辅</div>
+                        <div class="character-desc">
+                            隐忍蛰伏的政治老手，表面对严党恭顺，实则暗中积蓄力量。他是清流集团的领袖，最终借“改稻为桑”的弊政扳倒严党，成为新的内阁首辅。
+                        </div>
+                    </div>
+                </div>
+                <!-- 严世蕃 - 匹配yanshifan.jpg -->
+                <div class="character-card">
+                    <div class="character-img" style="background-image: url('yanshifan.jpg');"></div>
+                    <div class="character-info">
+                        <h4>严世蕃</h4>
+                        <div class="character-role">严党集团 | 严嵩之子</div>
+                        <div class="character-desc">
+                            狂妄跋扈、贪婪无度的“小阁老”，是严党贪腐恶行的实际执行者。他仗着父亲的权势横行朝野，最终因罪证确凿被斩首，成为严党倒台的关键推手。
+                        </div>
+                    </div>
+                </div>
+                <!-- 严嵩 - 匹配yansong.jpg -->
+                <div class="character-card">
+                    <div class="character-img" style="background-image: url('yansong.jpg');"></div>
+                    <div class="character-info">
+                        <h4>严嵩</h4>
+                        <div class="character-role">严党集团 | 内阁首辅</div>
+                        <div class="character-desc">
+                            老谋深算，把持朝政二十余年，为家族利益徇私舞弊，纵容儿子严世蕃横行霸道。他深谙嘉靖帝的心思，善于逢迎，却也在晚年见证了严党的覆灭，最终落得身败名裂、病死荒野的下场。
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="hobbies">
-            <h2>喜欢的人物</h2>
-            <div class="hobbies-container">
-                <div class="hobby-item">Hans Zoe</div>
-                <div class="hobby-item">Nicolaus Copernicus</div>
-                <div class="hobby-item">Lana Del Rey</div>
-                <div class="hobby-item">我妈</div>
+        <!-- 经典桥段 -->
+        <section class="section" id="classic">
+            <h2 class="section-title">经典桥段</h2>
+            <div class="classic-scene">
+                <h4>朝堂议“改稻为桑”</h4>
+                <p>
+                    开篇名场面，严党与清流在朝堂之上就“改稻为桑”国策展开激烈辩论。严世蕃力主快速推行，声称可一年填补国库亏空；徐阶、张居正则以“民为邦本”为由，质疑国策的可行性。嘉靖帝端坐龙椅之上，不发一言，却早已看透各方心思，最终拍板推行，埋下了后续所有矛盾的伏笔。
+                </p>
+            </div>
+            <div class="classic-scene">
+                <h4>嘉靖与海瑞狱中对谈</h4>
+                <p>
+                    海瑞上疏后被打入死牢，嘉靖帝亲自到狱中与他对谈。这是一场帝王与忠臣的灵魂交锋，嘉靖帝质问海瑞“何为君？何为臣？何为天下？”，海瑞则据理力争，直言嘉靖的怠政与奢靡是王朝衰落的根源。两人的对话，既是权力与正义的碰撞，也道出了各自的无奈与坚守。
+                </p>
+            </div>
+            <div class="classic-scene">
+                <h4>严嵩倒台</h4>
+                <p>
+                    在徐阶、张居正的布局下，严党的罪证被一一呈递到嘉靖帝面前。嘉靖帝早已对严党的贪得无厌忍无可忍，最终下旨将严嵩革职抄家，严世蕃斩首示众。当严嵩被赶出京城，拄着拐杖回望紫禁城时，一代权相的落幕，令人唏嘘不已。
+                </p>
             </div>
         </section>
-    </main>
+
+        <!-- 作品内涵 -->
+        <section class="section" id="connotation">
+            <h2 class="section-title">作品内涵</h2>
+            <div class="connotation-item">
+                <h4>历史深度：还原嘉靖朝的真实生态</h4>
+                <p>
+                    剧集并非简单的历史演绎，而是深度还原了嘉靖朝的政治结构、官场规则与社会民生。从内阁、司礼监的权力制衡，到地方官员的贪腐舞弊，再到百姓的流离失所，都真实再现了明朝中后期的衰落景象，为观众解读了王朝由盛转衰的深层根源。
+                </p>
+            </div>
+            <div class="connotation-item">
+                <h4>人性刻画：没有绝对的善恶</h4>
+                <p>
+                    剧集打破了传统历史剧“非黑即白”的人物塑造模式。严嵩虽贪腐专权，却对儿子舐犊情深；嘉靖虽自私多疑，却也有身为帝王的无奈；吕芳虽圆滑世故，却心存善念。每个角色都有自己的立场与抉择，展现了人性的复杂与多面性。
+                </p>
+            </div>
+            <div class="connotation-item">
+                <h4>艺术价值：中国历史剧的标杆</h4>
+                <p>
+                    精湛的剧本创作、考究的服化道、演员的传神演绎，让《大明王朝1566》成为中国历史剧的巅峰之作。陈宝国将嘉靖帝的深不可测演绎得入木三分，黄志忠则完美诠释了海瑞的刚正不阿，剧中的台词更是字字珠玑，兼具文学性与思想性。
+                </p>
+            </div>
+        </section>
+
+        <!-- 幕后花絮 -->
+        <section class="section" id="behind">
+            <h2 class="section-title">幕后花絮</h2>
+            <div class="behind-item">
+                <h4>耗时多年打磨的剧本</h4>
+                <p>
+                    编剧刘和平为创作《大明王朝1566》，查阅了大量明史资料，耗时数年打磨剧本。他不仅还原了历史事件，更通过人物的对话与抉择，挖掘了历史背后的人性与思想，让剧本既有历史厚度，又有艺术感染力。
+                </p>
+            </div>
+            <div class="behind-item">
+                <h4>演员的深度角色揣摩</h4>
+                <p>
+                    主演陈宝国为了演好嘉靖帝，提前数月研究明史，揣摩帝王的言行举止与心理活动。在拍摄狱中对谈的戏份时，他与黄志忠即兴发挥，将帝王的威严与忠臣的刚正展现得淋漓尽致，成为剧中的名场面。
+                </p>
+            </div>
+            <div class="behind-item">
+                <h4>从“收视低迷”到“神剧标杆”</h4>
+                <p>
+                    2007年剧集首播时，由于剧情偏严肃、节奏较慢，收视成绩并不理想。但随着网络的传播，观众逐渐发现了这部剧的价值，口碑一路发酵，如今已成为豆瓣评分9.8的“神剧”，被无数观众奉为中国历史剧的天花板。
+                </p>
+            </div>
+        </section>
+    </div>
+
+    <!-- 底部 -->
+    <footer>
+        <div class="footer-content">
+            <p>© 2025 大明王朝1566介绍网站 | 仅用于剧情交流，非商业用途</p>
+            <p>版权归《大明王朝1566》原制作方所有 | 部署于GitHub Pages</p>
+            <p>免责声明：本站内容基于剧集整理，非正史记载，仅供参考</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动（锚点链接跳转效果，避开固定头部）
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
